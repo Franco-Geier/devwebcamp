@@ -1,0 +1,25 @@
+{
+    "name": "francogeier/devwebcamp",
+    "description": "Proyecto PHP 8, MVC, SQL, BEM, SASS",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "MVC\\" : "./",
+            "Controllers\\" : "./controllers",
+            "Model\\" : "./models",
+            "Classes\\" : "./classes"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.6",
+        "phpmailer/phpmailer": "^6.10",
+        "intervention/image": "^3.11"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Franco-geier",
+            "email": "francoyogeier@gmail.com"
+        }
+    ]
+}
