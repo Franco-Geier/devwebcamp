@@ -2,18 +2,22 @@
 @use 'mixins' as m;
 
 h1, h2, h3 {
-    
+    @include m.headings;
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: clamp(3.6rem, 0.455vw + 3.455rem, 4rem);
 }
 h2 {
-    font-size: 3.6rem;
+    font-size: clamp(3rem, 0.682vw + 2.782rem, 3.6rem);
 }
 h3 {
-    font-size: 3rem;
+    font-size: clamp(2.7rem, 0.341vw + 2.591rem, 3rem);
 }
 .text-center {
     text-align: center;
+}
+
+[class$="__heading"] {
+    @include m.page-name;
 }

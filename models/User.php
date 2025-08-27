@@ -25,7 +25,7 @@ class User extends ActiveRecord {
         $this->password2 = $args['password2'] ?? '';
         $this->confirmed = isset($args['confirmed']) ? (int)$args['confirmed'] : 0;
         $this->token = $args['token'] ?? '';
-        $this->admin = $args['admin'] ?? ''; // Fijarse bien en la BD!!!
+        $this->admin = isset($args['admin']) ? (int)$args['admin'] : 0;
     }
 
     // // Validar el Login de Usuarios

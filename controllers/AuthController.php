@@ -78,7 +78,7 @@ class AuthController {
         }
 
         $router->render("auth/register", [
-            "tittle" => "Crea tu cuenta en UpTask",
+            "tittle" => "Crea tu cuenta en devWebCamp",
             "user" => $user,
             "alerts" => $alerts
         ]);

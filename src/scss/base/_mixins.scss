@@ -2,7 +2,7 @@
 @use "sass:color";
 
 /** Media Queries **/
-@mixin telefono {
+@mixin phone {
     @media (min-width: v.$phone) {
         @content;
     }
@@ -23,15 +23,14 @@
     }
 }
 
-@mixin boton($bgColor, $textColor) {
+@mixin button($bgColor, $textColor) {
     background-color: $bgColor;
-    padding: 1.5rem 4rem;
+    padding: clamp(1.3rem, 0.227vw + 1.227rem, 1.5rem) clamp(3.8rem, 0.227vw + 3.727rem, 4rem);
     color: $textColor;
-    font-size: 1.8rem;
+    font-size: clamp(1.4rem, 0.455vw + 1.255rem, 1.8rem);
     font-weight: 700;
     border: none;
-    transition-property: background-color;
-    transition-duration: .3s;
+    transition: background-color .3s;
     text-align: center;
     width: 100%;
     display: inline-block;
@@ -47,4 +46,26 @@
     @if $gap != null {
         gap: $gap;
     }
+}
+
+@mixin container {
+    width: min(95%, 120rem);
+    margin: 0 auto;
+}
+
+@mixin container-sm {
+    width: min(95%, 60rem);
+    margin: 0 auto;
+}
+
+@mixin headings {
+    font-family: v.$main-font;
+    font-weight: v.$bolder;
+    margin: 2rem 0;
+}
+
+@mixin page-name {
+    @include headings;
+    margin: 6rem 0 3rem;
+    text-align: center;
 }

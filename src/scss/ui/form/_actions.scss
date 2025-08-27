@@ -1,0 +1,13 @@
+@use 'base/variables' as v;
+
+.actions {
+    margin: 3rem 0;
+    display: flex;
+    justify-content: space-between;
+
+    &__link{
+        color: v.$black;
+        font-size: clamp(1.3rem, 0.227vw + 1.227rem, 1.5rem);
+        font-weight: v.$thin;
+    }
+}

@@ -1,6 +1,6 @@
 <main class="auth">
     <h2 class="auth__heading"><?php echo $tittle; ?></h2>
-    <p class="auth__text">Inicia Sesión en DevWebCamp</p>
+    <p class="auth__text">Recupera tu acceso a DevWebcamp</p>
 
     <form action="#" class="form">
         <div class="form__field">
@@ -14,22 +14,11 @@
             >
         </div>
 
-        <div class="form__field">
-            <label for="password" class="form__label">Password</label>
-            <input
-                type="password"
-                name="password"
-                id="password"
-                class="form__input"
-                placeholder="Tu Password"
-            >
-        </div>
-
-        <input type="submit" class="form__submit" value="Iniciar Sesión">
+        <input type="submit" class="form__submit" value="Enviar Instrucciones">
     </form>
 
     <div class="actions">
+        <a href="/login" class="actions__link">¿Ya tienes una cuenta? Iniciar sesión</a>
         <a href="/register" class="actions__link">¿Aún no tienes una cuenta? Obtnener una</a>
-        <a href="/forgot" class="actions__link">¿Olvidaste tu Password?</a>
     </div>
 </main>
