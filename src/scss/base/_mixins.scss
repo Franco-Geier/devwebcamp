@@ -25,9 +25,9 @@
 
 @mixin button($bgColor, $textColor) {
     background-color: $bgColor;
-    padding: clamp(1.3rem, 0.227vw + 1.227rem, 1.5rem) clamp(3.8rem, 0.227vw + 3.727rem, 4rem);
+    padding: clamp(1.3rem, 0.185vw + 1.241rem, 1.5rem) clamp(3.8rem, 0.185vw + 3.741rem, 4rem);
     color: $textColor;
-    font-size: clamp(1.4rem, 0.455vw + 1.255rem, 1.8rem);
+    font-size: clamp(1.4rem, 0.37vw + 1.281rem, 1.8rem);
     font-weight: 700;
     border: none;
     transition: background-color .3s;
@@ -49,7 +49,7 @@
 }
 
 @mixin container {
-    width: min(95%, 120rem);
+    width: min(95%, 140rem);
     margin: 0 auto;
 }
 
@@ -68,4 +68,20 @@
     @include headings;
     margin: 6rem 0 3rem;
     text-align: center;
+}
+
+@mixin gradient-text($init, $end) {
+    background: linear-gradient(to right, $init, $end);
+    background-clip: text;
+    color: transparent;
+}
+
+@mixin logo {
+    color: v.$white;
+    text-align: center;
+    margin-bottom: 2rem;
+    @include desktop {
+        text-align: left;
+        margin: 0;
+    }
 }

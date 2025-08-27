@@ -6,13 +6,13 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: clamp(3.6rem, 0.455vw + 3.455rem, 4rem);
+    font-size: clamp(3.6rem, 0.37vw + 3.481rem, 4rem);
 }
 h2 {
-    font-size: clamp(3rem, 0.682vw + 2.782rem, 3.6rem);
+    font-size: clamp(3rem, 0.556vw + 2.822rem, 3.6rem);
 }
 h3 {
-    font-size: clamp(2.7rem, 0.341vw + 2.591rem, 3rem);
+    font-size: clamp(2.7rem, 0.278vw + 2.611rem, 3rem);
 }
 .text-center {
     text-align: center;
