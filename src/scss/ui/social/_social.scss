@@ -9,5 +9,10 @@
     @include m.social-networks(v.$white, 2rem);
     @include m.tablet {
         justify-content: flex-end;
+        margin-top: 2rem;
+    }
+
+    &__link {
+        align-self: flex-start;
     }
 }

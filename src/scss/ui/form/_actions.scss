@@ -5,6 +5,11 @@
     display: flex;
     justify-content: space-between;
 
+    &--center {
+        @extend .actions;
+        justify-content: center;
+    }
+
     &__link{
         color: v.$black;
         font-size: clamp(1.3rem, 0.185vw + 1.241rem, 1.5rem);

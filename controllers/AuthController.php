@@ -24,8 +24,14 @@ class AuthController {
                         $_SESSION["name"] = $foundUser->name;
                         $_SESSION["lastName"] = $foundUser->lastName;
                         $_SESSION["email"] = $foundUser->email;
-                        $_SESSION['admin'] = $foundUser->admin ?? null;
-                        header("Location: /dashboard");
+                        $_SESSION['admin'] = $foundUser->admin ?? 0;
+
+                        if($foundUser->admin) {
+                            header("Location: /admin/dashboard");
+                        } else {
+                            header("Location: /end-register");
+                        }
+                        
                     } else {
                         User::setAlert("error", "Password incorrecto");
                     }
@@ -98,7 +104,7 @@ class AuthController {
                     $foundUser->save();
                     $email = new Email($foundUser->email, $foundUser->name, $foundUser->token);
                     $email->sendInstructions();
-                    User::setAlert("exito", "Hemos enviado las instrucciones a tu email");
+                    User::setAlert("success", "Hemos enviado las instrucciones a tu email");
                 } else {
                     User::setAlert("error", "El usuario no existe o no está confirmado");
                 }
@@ -134,7 +140,7 @@ class AuthController {
                 $result = $user->save();
 
                 if($result) {
-                    header("Location: /");
+                    header("Location: /login");
                 }
             }
         }
@@ -160,12 +166,12 @@ class AuthController {
         $user = User::where("token", $token);
 
         if(!$user) {
-            user::setAlert("error", "Token no válido"); // No se encontró un usuario con ese token
+            user::setAlert("error", "Token no válido, la cuenta no se confirmó"); // No se encontró un usuario con ese token
         } else {
             $user->confirmed = 1; // Confirmar la cuenta
             $user->token = "";
             $user->save(); // Guardar en la BD
-            user::setAlert("exito", "Cuenta confirmada correctamente");
+            user::setAlert("success", "Cuenta confirmada exitosamente");
         }
 
         $alerts = User::getAlerts();

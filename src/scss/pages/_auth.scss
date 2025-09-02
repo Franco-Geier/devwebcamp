@@ -2,4 +2,8 @@
 
 .auth {
     @include m.container-sm;
+
+    &__text {
+        text-align: justify;
+    }
 }

@@ -12,6 +12,7 @@
         @include m.container;
         @include m.tablet {
             display: grid;
+            align-items: baseline;
             @include m.grid(2, 3rem);
         }
     }

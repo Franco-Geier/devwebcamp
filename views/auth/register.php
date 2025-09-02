@@ -2,7 +2,11 @@
     <h2 class="auth__heading"><?php echo $tittle; ?></h2>
     <p class="auth__text">Registrate en DevWebCamp</p>
 
-    <form action="#" class="form">
+    <?php 
+        require_once __DIR__ . "/../templates/alerts.php";
+    ?>
+
+    <form method="POST" action="/register" class="form">
         <div class="form__field">
             <label for="name" class="form__label">Nombre</label>
             <input
@@ -11,7 +15,7 @@
                 id="name"
                 class="form__input"
                 placeholder="Tu Nombre"
-            >
+                value="<?php echo $user->name; ?>">
         </div>
 
         <div class="form__field">
@@ -22,7 +26,7 @@
                 id="lastName"
                 class="form__input"
                 placeholder="Tu Apellido"
-            >
+                value="<?php echo $user->lastName; ?>">
         </div>
 
         <div class="form__field">
@@ -33,7 +37,7 @@
                 id="email"
                 class="form__input"
                 placeholder="Tu Email"
-            >
+                value="<?php echo $user->email; ?>">
         </div>
 
         <div class="form__field">
@@ -43,8 +47,7 @@
                 name="password"
                 id="password"
                 class="form__input"
-                placeholder="Tu Password"
-            >
+                placeholder="Tu Password">
         </div>
 
         <div class="form__field">
@@ -54,8 +57,7 @@
                 name="password2"
                 id="password2"
                 class="form__input"
-                placeholder="Repite Tu Password"
-            >
+                placeholder="Repite Tu Password">
         </div>
 
         <input type="submit" class="form__submit" value="Crear Cuenta">
