@@ -122,3 +122,16 @@
         display: none;
     }
 }
+
+@mixin link {
+    all: unset;
+    color: v.$white;
+    font-size: clamp(1.2rem, 0.185vw + 1.141rem, 1.4rem);
+    text-transform: uppercase;
+    font-weight: v.$bold;
+
+    &:hover {
+        color: v.$blue;
+        cursor: pointer;
+    }
+}

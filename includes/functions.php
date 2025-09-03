@@ -44,3 +44,8 @@ function validateOrRedirection(string $url): int {
 function generateToken(): string {
     return md5(uniqid((string)rand(), true));
 }
+
+// Función que muestra la página actual
+function currentPage($path): bool {
+    return str_contains($_SERVER["PATH_INFO"], $path) ? true : false;
+}

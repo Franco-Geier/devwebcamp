@@ -28,30 +28,30 @@
     }
 
     &__link {
-        color: v.$white;
-        font-size: clamp(1.2rem, 0.185vw + 1.141rem, 1.4rem);
-        text-transform: uppercase;
-        font-weight: v.$bold;
-
-        &:hover {
-            color: v.$blue;
-        }
+        @include m.link;
     }
 
     &__content {
         padding-top: 8rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
         @include m.tablet {
             padding-top: 5rem;
+            align-items: flex-start;
         }
     }
 
     &__logo {
+        margin: 0;
+        line-height: 1.1;
+        display: inline-block;
         font-size: clamp(3.5rem, 4.167vw + 2.167rem, 8rem);
         text-align: center;
         @include m.gradient-text(v.$blue, v.$secondary);
         @include m.tablet {
             text-align: left;
-            display: inline-block;
         }
     }
 

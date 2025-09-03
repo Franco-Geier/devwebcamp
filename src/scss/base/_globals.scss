@@ -11,12 +11,11 @@ body {
     grid-template-rows: auto 1fr auto;
 }
 .container {
-    width: 95%;
-    max-width: 1200px;
+    width: min(95%, 140rem);
     margin: 0 auto;
 }
 .container-sm {
-    max-width: 70rem;
+    width: min(95%, 70rem);
     margin: 0 auto;
 }
 a {

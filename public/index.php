@@ -4,6 +4,11 @@ require_once __DIR__ . '/../includes/app.php';
 
 use MVC\Router;
 use Controllers\AuthController;
+use Controllers\GiftsController;
+use Controllers\EventsController;
+use Controllers\SpeakersController;
+use Controllers\DashboardController;
+use Controllers\RegisteredController;
 
 $router = new Router();
 
@@ -28,5 +33,11 @@ $router->post('/restore', [AuthController::class, 'restore']);
 $router->get('/message', [AuthController::class, 'message']);
 $router->get('/confirm-account', [AuthController::class, 'confirm']);
 
+// Area de administración
+$router->get('/admin/dashboard', [DashboardController::class, 'index']);
+$router->get('/admin/speakers', [SpeakersController::class, 'index']);
+$router->get('/admin/events', [EventsController::class, 'index']);
+$router->get('/admin/registered', [RegisteredController::class, 'index']);
+$router->get('/admin/gifts', [GiftsController::class, 'index']);
 
 $router->validateRoutes();
