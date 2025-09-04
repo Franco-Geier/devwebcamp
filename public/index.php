@@ -35,7 +35,10 @@ $router->get('/confirm-account', [AuthController::class, 'confirm']);
 
 // Area de administración
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
+
 $router->get('/admin/speakers', [SpeakersController::class, 'index']);
+$router->get('/admin/speakers/create', [SpeakersController::class, 'create']);
+
 $router->get('/admin/events', [EventsController::class, 'index']);
 $router->get('/admin/registered', [RegisteredController::class, 'index']);
 $router->get('/admin/gifts', [GiftsController::class, 'index']);

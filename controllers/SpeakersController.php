@@ -9,4 +9,13 @@ class SpeakersController {
             "tittle" => "Ponentes / Conferencistas"
         ]);
     }
+
+    public static function create(Router $router) {
+        $alerts = [];
+        
+        $router->render("admin/speakers/create", [
+            "tittle" => "Registrar Ponente",
+            "alerts" => $alerts
+        ]);
+    }
 }
