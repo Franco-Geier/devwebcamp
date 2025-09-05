@@ -67,8 +67,11 @@
             @extend .form__input;
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
-            
         }
+    }
+
+    &__list {
+        @include m.tags;
     }
 
     &__submit {

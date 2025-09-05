@@ -46,7 +46,7 @@
     </div>
 
     <div class="form__field">
-        <label for="image" class="form__label">Seleccionar Imagen</label>
+        <label for="image" class="form__label">Imagen</label>
         <input
             type="file"
             name="image"
@@ -66,8 +66,8 @@
             class="form__input"
             placeholder="Ej. Node.js, PHP, CSS, Laravel, UX / UI">
     
-            <div id="tags" class="form_list"></div>
-            <input type="hidden" name="tags" vlaue="<?php echo $spaekers->tags ?? ''; ?>">
+            <div id="tags" class="form__list"></div>
+            <input type="hidden" name="tags" value="<?php echo $spaekers->tags ?? ''; ?>">
     </div>
 </fieldset>
 
