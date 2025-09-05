@@ -4,11 +4,11 @@ namespace Model;
 
 class User extends ActiveRecord {
     protected static $table = 'users';
-    protected static $columnsDB = ['id', 'name', 'lastName', 'email', 'password', 'confirmed', 'token', 'admin'];
+    protected static $columnsDB = ['id', 'name', 'last_name', 'email', 'password', 'confirmed', 'token', 'admin'];
     
     public ?int $id;
     public string $name;
-    public string $lastName;
+    public string $last_name;
     public string $email;
     public string $password;
     public string $password2;
@@ -21,7 +21,7 @@ class User extends ActiveRecord {
     public function __construct($args = []) {
         $this->id = $args["id"] ?? null;
         $this->name = $args['name'] ?? '';
-        $this->lastName = $args['lastName'] ?? '';
+        $this->last_name = $args['last_name'] ?? '';
         $this->email = $args['email'] ?? '';
         $this->password = $args['password'] ?? '';
         $this->password2 = $args['password2'] ?? '';
@@ -76,11 +76,11 @@ class User extends ActiveRecord {
             self::$alerts["error"][] = "El nombre debe tener hasta 30 caracteres.";
         }
 
-        if(!$this->lastName) {
+        if(!$this->last_name) {
             self::$alerts['error'][] = 'El apellido es obligatorio';
-        } elseif (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s'-]+$/", $this->lastName)) {
+        } elseif (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s'-]+$/", $this->last_name)) {
             self::$alerts["error"][] = "El apellido solo puede contener letras, espacios, apóstrofes y guiones.";
-        } elseif (mb_strlen($this->lastName) > 30) {
+        } elseif (mb_strlen($this->last_name) > 30) {
             self::$alerts["error"][] = "El apellido debe tener hasta 30 caracteres.";
         }
     }

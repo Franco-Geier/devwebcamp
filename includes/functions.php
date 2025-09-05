@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+define("FOLDER_IMAGES", $_SERVER["DOCUMENT_ROOT"] . "/img/speakers");
 
 function debug(mixed $variable): void {
     echo "<pre>";

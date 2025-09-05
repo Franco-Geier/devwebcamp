@@ -13,14 +13,14 @@
     </div>
 
     <div class="form__field">
-        <label for="lastName" class="form__label">Apellido</label>
+        <label for="last_name" class="form__label">Apellido</label>
         <input
             type="text"
-            name="lastName"
-            id="lastName"
+            name="last_name"
+            id="last_name"
             class="form__input"
             placeholder="Apellido Ponente"
-            value="<?php echo $speaker->lastName ?? ''; ?>">
+            value="<?php echo $speaker->last_name ?? ''; ?>">
     </div>
 
     <div class="form__field">
@@ -51,7 +51,8 @@
             type="file"
             name="image"
             id="image"
-            class="form__input form__input--file">
+            class="form__input form__input--file"
+            accept="image/jpeg,image/jpg,image/png,image/webp,image/avif">
     </div>
 </fieldset>
 
@@ -67,7 +68,7 @@
             placeholder="Ej. Node.js, PHP, CSS, Laravel, UX / UI">
     
             <div id="tags" class="form__list"></div>
-            <input type="hidden" name="tags" value="<?php echo $spaekers->tags ?? ''; ?>">
+            <input type="hidden" name="tags" value="<?php echo $speaker->tags ?? ''; ?>">
     </div>
 </fieldset>
 
@@ -81,7 +82,7 @@
             </div>
             <input
                 type="text"
-                name="networks[facebook]"
+                name="social_networks[facebook]"
                 class="form__input--socials"
                 placeholder="Facebook"
                 value="<?php echo $speaker->facebook ?? ''; ?>">
@@ -95,7 +96,7 @@
             </div>
             <input
                 type="text"
-                name="networks[twitter]"
+                name="social_networks[twitter]"
                 class="form__input--socials"
                 placeholder="Twitter"
                 value="<?php echo $speaker->twitter ?? ''; ?>">
@@ -109,7 +110,7 @@
             </div>
             <input
                 type="text"
-                name="networks[youtube]"
+                name="social_networks[youtube]"
                 class="form__input--socials"
                 placeholder="YouTube"
                 value="<?php echo $speaker->youtube ?? ''; ?>">
@@ -123,7 +124,7 @@
             </div>
             <input
                 type="text"
-                name="networks[instagram]"
+                name="social_networks[instagram]"
                 class="form__input--socials"
                 placeholder="Instagram"
                 value="<?php echo $speaker->instagram ?? ''; ?>">
@@ -137,7 +138,7 @@
             </div>
             <input
                 type="text"
-                name="networks[tiktok]"
+                name="social_networks[tiktok]"
                 class="form__input--socials"
                 placeholder="Tiktok"
                 value="<?php echo $speaker->tiktok ?? ''; ?>">
@@ -151,7 +152,7 @@
             </div>
             <input
                 type="text"
-                name="networks[github]"
+                name="social_networks[github]"
                 class="form__input--socials"
                 placeholder="GitHub"
                 value="<?php echo $speaker->github ?? ''; ?>">

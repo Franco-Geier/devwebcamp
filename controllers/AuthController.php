@@ -22,7 +22,7 @@ class AuthController {
                         session_start();
                         $_SESSION["id"] = $foundUser->id;
                         $_SESSION["name"] = $foundUser->name;
-                        $_SESSION["lastName"] = $foundUser->lastName;
+                        $_SESSION["last_name"] = $foundUser->last_name;
                         $_SESSION["email"] = $foundUser->email;
                         $_SESSION['admin'] = $foundUser->admin ?? 0;
 

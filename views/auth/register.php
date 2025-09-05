@@ -19,14 +19,14 @@
         </div>
 
         <div class="form__field">
-            <label for="lastName" class="form__label">Apellido</label>
+            <label for="last_name" class="form__label">Apellido</label>
             <input
                 type="text"
-                name="lastName"
-                id="lastName"
+                name="last_name"
+                id="last_name"
                 class="form__input"
                 placeholder="Tu Apellido"
-                value="<?php echo $user->lastName; ?>">
+                value="<?php echo $user->last_name; ?>">
         </div>
 
         <div class="form__field">
