@@ -54,6 +54,17 @@
             class="form__input form__input--file"
             accept="image/jpeg,image/jpg,image/png,image/webp,image/avif">
     </div>
+
+    <?php if(isset($speaker->current_image) && !empty($speaker->current_image)) { ?>
+        <p class="form__text">Imagen Actual:</p>
+        <div class="form__image">
+            <picture>
+                <source srcset="<?php echo $_ENV["HOST"] . '/img/speakers/' . $speaker->current_image; ?>.webp" type="image/webp">
+                <source srcset="<?php echo $_ENV["HOST"] . '/img/speakers/' . $speaker->current_image; ?>.png" type="image/png">
+                <img src="<?php echo $_ENV["HOST"] . '/img/speakers/' . $speaker->current_image; ?>.png" alt="Imagen Ponente" loading="lazy">
+            </picture>
+        </div>
+    <?php } ?>
 </fieldset>
 
 <fieldset class="form__fieldset">
@@ -85,7 +96,7 @@
                 name="social_networks[facebook]"
                 class="form__input--socials"
                 placeholder="Facebook"
-                value="<?php echo $speaker->facebook ?? ''; ?>">
+                value="<?php echo $social_networks->facebook ?? ''; ?>">
         </div>
     </div>
 
@@ -99,7 +110,7 @@
                 name="social_networks[twitter]"
                 class="form__input--socials"
                 placeholder="Twitter"
-                value="<?php echo $speaker->twitter ?? ''; ?>">
+                value="<?php echo $social_networks->twitter ?? ''; ?>">
         </div>
     </div>
 
@@ -113,7 +124,7 @@
                 name="social_networks[youtube]"
                 class="form__input--socials"
                 placeholder="YouTube"
-                value="<?php echo $speaker->youtube ?? ''; ?>">
+                value="<?php echo $social_networks->youtube ?? ''; ?>">
         </div>
     </div>
 
@@ -127,7 +138,7 @@
                 name="social_networks[instagram]"
                 class="form__input--socials"
                 placeholder="Instagram"
-                value="<?php echo $speaker->instagram ?? ''; ?>">
+                value="<?php echo $social_networks->instagram ?? ''; ?>">
         </div>
     </div>
 
@@ -141,7 +152,7 @@
                 name="social_networks[tiktok]"
                 class="form__input--socials"
                 placeholder="Tiktok"
-                value="<?php echo $speaker->tiktok ?? ''; ?>">
+                value="<?php echo $social_networks->tiktok ?? ''; ?>">
         </div>
     </div>
 
@@ -155,7 +166,7 @@
                 name="social_networks[github]"
                 class="form__input--socials"
                 placeholder="GitHub"
-                value="<?php echo $speaker->github ?? ''; ?>">
+                value="<?php echo $social_networks->github ?? ''; ?>">
         </div>
     </div>
 </fieldset>

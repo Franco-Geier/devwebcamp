@@ -12,6 +12,7 @@ class Speaker extends ActiveRecord {
     public string $city;
     public string $country;
     public string $image;
+    public string $current_image;
     public string $tags;
     public string $social_networks;
     
@@ -22,6 +23,7 @@ class Speaker extends ActiveRecord {
         $this->city = $args['city'] ?? '';
         $this->country = $args['country'] ?? '';
         $this->image = $args['image'] ?? '';
+        $this->current_image = $args['image'] ?? '';
         $this->tags = $args['tags'] ?? '';
         $this->social_networks = $args['social_networks'] ?? '';
     }
@@ -46,5 +48,17 @@ class Speaker extends ActiveRecord {
             self::$alerts['error'][] = 'El Campo áreas es obligatorio';
         }
         return self::$alerts;
+    }
+
+    public static function deleteImageFiles($imageName) {
+        if(empty($imageName)) return;
+            $extensions = ['png', 'webp', 'avif'];
+        
+            foreach ($extensions as $ext) {
+                $filePath = FOLDER_IMAGES . "/" . $imageName . "." . $ext;
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
+            }
     }
 }

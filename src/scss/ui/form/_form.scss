@@ -70,6 +70,14 @@
         }
     }
 
+    &__text {
+        margin-top: 3rem;
+    }
+
+    &__image {
+        max-width: 20rem;
+    }
+
     &__list {
         @include m.tags;
     }

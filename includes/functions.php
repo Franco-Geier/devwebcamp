@@ -10,10 +10,20 @@ function debug(mixed $variable): void {
 }
 
 // Función que revisa que el usuario este autenticado
-function isAuth() : void {
-    if(!isset($_SESSION['login'])) {
-        header('Location: /');
-    }
+// function isAuth(): void {
+//     if(!isset($_SESSION['login'])) {
+//         header('Location: /');
+//     }
+// }
+
+function isAuth(): bool {
+    session_start();
+    return isset($_SESSION["name"]) && !empty($_SESSION);
+}
+
+function isAdmin(): bool {
+    session_start();
+    return isset($_SESSION["admin"]) && !empty($_SESSION["admin"]);
 }
 
 // Escapar/Sanitizar HTML
@@ -35,7 +45,7 @@ function validateOrRedirection(string $url): int {
     // Validar la URL por ID válido
     $id = filter_var($_GET["id"] ?? null, FILTER_VALIDATE_INT);
     if(!$id) {
-        header("location: $url");
+        header("Location: $url");
         exit;
     }
     return $id;

@@ -5,6 +5,13 @@
         const tagsDiv = document.querySelector("#tags");
         const tagsInputHidden = document.querySelector('[name="tags"]')
         let tags = [];
+        
+        // Recuperar del input oculto
+        if(tagsInputHidden.value !== "" && tagsInputHidden.value.trim() !== "") {
+            tags = tagsInputHidden.value.split(",");
+            showTags();
+        }
+
         tagsInput.addEventListener("keypress", saveTag);
 
         function saveTag(e) {

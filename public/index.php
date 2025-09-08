@@ -39,6 +39,9 @@ $router->get('/admin/dashboard', [DashboardController::class, 'index']);
 $router->get('/admin/speakers', [SpeakersController::class, 'index']);
 $router->get('/admin/speakers/create', [SpeakersController::class, 'create']);
 $router->post('/admin/speakers/create', [SpeakersController::class, 'create']);
+$router->get('/admin/speakers/edit', [SpeakersController::class, 'edit']);
+$router->post('/admin/speakers/edit', [SpeakersController::class, 'edit']);
+$router->post('/admin/speakers/delete', [SpeakersController::class, 'delete']);
 
 $router->get('/admin/events', [EventsController::class, 'index']);
 $router->get('/admin/registered', [RegisteredController::class, 'index']);
