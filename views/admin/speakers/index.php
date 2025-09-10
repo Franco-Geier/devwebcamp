@@ -51,3 +51,7 @@
         <p class="text-center">Aún No Hay Ponentes</p>
     <?php } ?>
 </div>
+
+<?php
+    echo $pagination;
+?>

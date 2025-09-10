@@ -1,6 +1,7 @@
 <?php
 namespace Controllers;
 
+use Classes\Pagination;
 use Model\Speaker;
 use MVC\Router;
 use Intervention\Image\ImageManager;
@@ -8,7 +9,22 @@ use Intervention\Image\Drivers\Gd\Driver;
 
 class SpeakersController {
     public static function index(Router $router) {
-        $speakers = Speaker::allWithJoins();
+        $current_page = $_GET["page"] ?? 1;
+        $current_page = filter_var($current_page, FILTER_VALIDATE_INT);
+        if($current_page === false || $current_page < 1) {
+            header("Location: /admin/speakers?page=1");
+            exit;
+        }
+
+        $registrations_per_page = 10;
+        $total_registrations = Speaker::total();
+        $pagination = new Pagination($current_page, $registrations_per_page, $total_registrations, 5);
+
+        if($pagination->total_pages() < $current_page) {
+            header("Location: /admin/speakers?page=1");
+        }
+
+        $speakers = Speaker::paginate($registrations_per_page, $pagination->offset());
 
         if(!isAdmin()) {
             header("Location: /login");
@@ -16,7 +32,8 @@ class SpeakersController {
 
         $router->render("admin/speakers/index", [
             "tittle" => "Ponentes / Conferencistas",
-            "speakers" => $speakers
+            "speakers" => $speakers,
+            "pagination" =>$pagination->pagination()
         ]);
     }
 

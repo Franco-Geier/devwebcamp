@@ -52,6 +52,21 @@
             return [];
         }
 
+        // Paginar los registros
+        public static function paginate($per_page, $offset) {
+            $query = "SELECT * FROM " . static::$table . " ORDER BY id DESC LIMIT {$per_page} OFFSET {$offset}";
+            $result = self::consultSQL($query);
+            return $result;
+        }
+
+        // Traer un total de los registros
+        public static function total() {
+            $query = "SELECT COUNT(*) FROM " . static::$table;
+            $result = self::$db->query($query);
+            $total = $result->fetch(PDO::FETCH_ASSOC);
+            return array_shift($total);
+        }
+
 
         /**
          * Devuelve los campos que se deben seleccionar en la consulta.
@@ -72,6 +87,7 @@
             $joins = static::$relations ?? [];
             return implode(" ", $joins);
         }
+
 
         protected static function createObject($registro): static {
             $objeto = new static;
