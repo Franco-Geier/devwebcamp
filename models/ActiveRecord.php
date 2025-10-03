@@ -198,6 +198,23 @@
         }
 
 
+        /** Búsqueda where con multiples opciones
+         * 
+         */
+        public static function whereArray($array = []) {
+            $query = "SELECT * FROM " . static::$table . " WHERE ";
+            foreach($array as $key => $value) {
+                if($key == array_key_last($array)) {
+                    $query .= "{$key} = '{$value}'";
+                } else {
+                    $query .= "{$key} = '{$value}' AND ";
+                }
+            }
+            $result = self::consultSQL($query);
+            return $result;
+        }
+
+
         public function save(): bool {
             if(!is_null($this->id)) { // Si ya hay un Id
                 return $this->update(); // Actualizar
@@ -253,10 +270,60 @@
 
         
         // Sincroniza el objeto en memoria con los cambios realizados por el usuario
+        // public function sincronize($args = []): void {
+        //     // foreach($args as $key => $value) {
+        //     //     if(property_exists($this, $key) && !is_null($value)) {
+        //     //         $this->$key = is_string($value) ? trim($value) : $value;
+        //     //     }
+        //     // }
+
+        //     // Definir qué propiedades deben ser convertidas a entero
+        //     $integerProperties = ['available', 'category_id', 'day_id', 'hour_id', 'speaker_id'];
+            
+        //     foreach($args as $key => $value) {
+        //         if(property_exists($this, $key) && !is_null($value)) {
+                    
+        //             // Si la propiedad debe ser un entero
+        //             if(in_array($key, $integerProperties)) {
+        //                 // Convertir string vacío a null para propiedades nullable
+        //                 if(is_string($value) && trim($value) === '') {
+        //                     $this->$key = null;
+        //                 } else {
+        //                     // Convertir a entero
+        //                     $this->$key = (int)$value;
+        //                 }
+        //             } else {
+        //                 // Para propiedades string, aplicar trim como antes
+        //                 $this->$key = is_string($value) ? trim($value) : $value;
+        //             }
+        //         }
+        //     }
+        // }
+
+        
         public function sincronize($args = []): void {
             foreach($args as $key => $value) {
                 if(property_exists($this, $key) && !is_null($value)) {
-                    $this->$key = is_string($value) ? trim($value) : $value;
+                    
+                    // Obtener el tipo de la propiedad usando reflexión
+                    $reflection = new \ReflectionProperty($this, $key);
+                    $type = $reflection->getType();
+                    
+                    if($type && !$type->isBuiltin()) {
+                        continue; // Saltar propiedades de objeto
+                    }
+                    
+                    if($type && $type->getName() === 'int') {
+                        // Manejar conversión a entero
+                        if(is_string($value) && trim($value) === '' && $type->allowsNull()) {
+                            $this->$key = null;
+                        } else {
+                            $this->$key = (int)$value;
+                        }
+                    } else {
+                        // Para otros tipos (especialmente string)
+                        $this->$key = is_string($value) ? trim($value) : $value;
+                    }
                 }
             }
         }
@@ -275,7 +342,7 @@
         public function cleanAtributes(): array {
             $atributos = [];
             foreach (static::$columnsDB as $columna) {
-                if (in_array($columna, ['id', 'creado', 'fecha_registro'])) continue;
+                if(in_array($columna, ['id', 'creado', 'fecha_registro'])) continue;
                 $atributos[$columna] = $this->$columna;
             }
             return $atributos;

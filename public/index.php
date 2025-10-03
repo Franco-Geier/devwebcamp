@@ -6,6 +6,7 @@ use MVC\Router;
 use Controllers\AuthController;
 use Controllers\GiftsController;
 use Controllers\EventsController;
+use Controllers\APIEvents;
 use Controllers\SpeakersController;
 use Controllers\DashboardController;
 use Controllers\RegisteredController;
@@ -44,6 +45,11 @@ $router->post('/admin/speakers/edit', [SpeakersController::class, 'edit']);
 $router->post('/admin/speakers/delete', [SpeakersController::class, 'delete']);
 
 $router->get('/admin/events', [EventsController::class, 'index']);
+$router->get('/admin/events/create', [EventsController::class, 'create']);
+$router->post('/admin/events/create', [EventsController::class, 'create']);
+
+$router->get('/api/events-schedule', [APIEvents::class, 'index']);
+
 $router->get('/admin/registered', [RegisteredController::class, 'index']);
 $router->get('/admin/gifts', [GiftsController::class, 'index']);
 
