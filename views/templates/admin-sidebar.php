@@ -17,7 +17,7 @@
         <a href="/admin/events" class="dashboard__link <?php echo currentPage("/events") ? "dashboard__link--current" : ""; ?>">
             <i class="fa-solid fa-calendar dashboard__icon"></i>
             <span class="dashboard__menu-text">
-                Events
+                Eventos
             </span>
         </a>
 

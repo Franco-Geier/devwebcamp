@@ -8,7 +8,7 @@
             name="name"
             id="name"
             class="form__input"
-            placeholder="Nombre Ponente"
+            placeholder="Nombre Evento"
             value="<?php echo $event->name; ?>">
     </div>
 
@@ -78,6 +78,9 @@
             id="speakers"
             class="form__input"
             placeholder="Buscar Ponente">
+
+        <ul id="speakers-list" class="speakers-list"></ul>
+        <input type="hidden" name="speaker_id" value="">
     </div>
 
     <div class="form__field">
