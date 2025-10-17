@@ -1,4 +1,5 @@
 (function() {
+    
     const speakersInput = document.querySelector("#speakers");
 
     if(speakersInput) {
@@ -9,15 +10,33 @@
         const hiddenSpeaker = document.querySelector('[name="speaker_id"]')
 
         getSpeakers();
-
         speakersInput.addEventListener("input", searchSpeakers);
+
+        if(hiddenSpeaker.value) {
+            (async() => {
+                const speaker = await getSpeaker(hiddenSpeaker.value);
+                const {name, last_name} = speaker;
+                
+                // Insertar en el HTML
+                const speakerDOM = document.createElement("LI");
+                speakerDOM.classList.add("speakers-list__speaker--choosed");
+                speakerDOM.textContent = `${name} ${last_name}`;
+                speakersList.append(speakerDOM);
+            })();
+        }
 
         async function getSpeakers() {
             const url = `/api/speakers`;
             const response = await fetch(url);
             const result = await response.json();
-            
             formatSpeakers(result);
+        }
+
+        async function getSpeaker(id) {
+            const url = `/api/speaker?id=${id}`;
+            const response = await fetch(url);
+            const result = await response.json();
+            return result;     
         }
 
         function formatSpeakers(speakersArray = []) {

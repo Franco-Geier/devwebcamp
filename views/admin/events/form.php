@@ -46,12 +46,16 @@
                             type="radio"
                             name="day"
                             id="<?php echo strtolower($day->name); ?>"
-                            value="<?php echo $day->id; ?>">
+                            value="<?php echo $day->id; ?>"
+                            <?php echo ($event->day_id === $day->id) ? 'checked' : ''; ?>>
                     </div>
                 <?php } ?> 
             </div>
         </fieldset>
-        <input type="hidden" name="day_id" value="">
+        <input type="hidden" name="day_id" value="<?php echo $event->day_id; ?>">
+        <?php if(isset($event->id)) { ?>
+            <input type="hidden" name="event_id" id="event_id" value="<?php echo $event->id; ?>">
+        <?php } ?>
     </div>
 
     <div class="form__field">
@@ -65,7 +69,7 @@
                 <?php } ?>
             </ul>
         </fieldset>
-        <input type="hidden" name="hour_id" value="">
+        <input type="hidden" name="hour_id" value="<?php echo $event->hour_id; ?>">
     </div>
 </fieldset>
 
@@ -80,7 +84,7 @@
             placeholder="Buscar Ponente">
 
         <ul id="speakers-list" class="speakers-list"></ul>
-        <input type="hidden" name="speaker_id" value="">
+        <input type="hidden" name="speaker_id" value="<?php echo $event->speaker_id; ?>">
     </div>
 
     <div class="form__field">

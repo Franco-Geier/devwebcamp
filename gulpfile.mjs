@@ -12,7 +12,7 @@ import postcss from "gulp-postcss";
 import sourcemaps from "gulp-sourcemaps";
 
 // javascript
-import terser from "gulp-terser-js";
+import terser from "gulp-terser";
 import concat from "gulp-concat"
 import rename from "gulp-rename";
 

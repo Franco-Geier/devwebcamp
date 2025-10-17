@@ -188,11 +188,12 @@ class SpeakersController {
         ]);
     }
 
-    public static function delete(Router $router) {
-        if(!isAdmin()) {
-            header("Location: /login");
-        }
+    public static function delete() {
         if($_SERVER["REQUEST_METHOD"] === "POST") {
+            if(!isAdmin()) {
+                header("Location: /login");
+            }
+
             $id = $_POST["id"];
             $speaker = Speaker::find($id);
 

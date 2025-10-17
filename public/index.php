@@ -48,9 +48,13 @@ $router->post('/admin/speakers/delete', [SpeakersController::class, 'delete']);
 $router->get('/admin/events', [EventsController::class, 'index']);
 $router->get('/admin/events/create', [EventsController::class, 'create']);
 $router->post('/admin/events/create', [EventsController::class, 'create']);
+$router->get('/admin/events/edit', [EventsController::class, 'edit']);
+$router->post('/admin/events/edit', [EventsController::class, 'edit']);
+$router->post('/admin/events/delete', [EventsController::class, 'delete']);
 
 $router->get('/api/events-schedule', [APIEvents::class, 'index']);
 $router->get('/api/speakers', [APISpeakers::class, 'index']);
+$router->get('/api/speaker', [APISpeakers::class, 'speaker']);
 
 $router->get('/admin/registered', [RegisteredController::class, 'index']);
 $router->get('/admin/gifts', [GiftsController::class, 'index']);

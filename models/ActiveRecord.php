@@ -53,12 +53,36 @@
         }
 
         // Paginar los registros
+        // public static function paginate($per_page, $offset) {
+        //     $query = "SELECT * FROM " . static::$table . " ORDER BY id DESC LIMIT {$per_page} OFFSET {$offset}";
+        //     $result = self::consultSQL($query);
+        //     return $result;
+        // }
+
         public static function paginate($per_page, $offset) {
+        // Verificar si esta clase tiene relaciones definidas
+        if(!empty(static::$relations)) {
+            // Si tiene relaciones, construir query con JOINs
+            $fields = static::relationsFields(); // Trae los campos que definiste
+            $joins = static::buildRelations();    // Construye los LEFT JOIN
+            
+            $query = "
+                SELECT $fields
+                FROM " . static::$table . "
+                $joins
+                ORDER BY " . static::$table . ".id DESC 
+                LIMIT {$per_page} OFFSET {$offset}
+            ";
+        } else {
+            // Si no tiene relaciones, query normal
             $query = "SELECT * FROM " . static::$table . " ORDER BY id DESC LIMIT {$per_page} OFFSET {$offset}";
-            $result = self::consultSQL($query);
-            return $result;
+        }
+        
+        $result = self::consultSQL($query);
+        return $result;
         }
 
+        
         // Traer un total de los registros
         public static function total() {
             $query = "SELECT COUNT(*) FROM " . static::$table;

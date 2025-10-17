@@ -6,6 +6,23 @@ class Event extends ActiveRecord {
     protected static $table = 'events';
     protected static $columnsDB = ['id', 'name', 'description', 'available', 'category_id', 'day_id', 'hour_id', 'speaker_id'];
 
+    // Definir las relaciones
+    protected static array $relations = [
+        "LEFT JOIN categories ON events.category_id = categories.id",
+        "LEFT JOIN days ON events.day_id = days.id",
+        "LEFT JOIN hours ON events.hour_id = hours.id",
+        "LEFT JOIN speakers ON events.speaker_id = speakers.id"
+    ];
+
+    // Campos de las relaciones
+    protected static array $relationsFields = [
+        "categories.name AS category_name",
+        "days.name AS day_name",
+        "hours.hour AS hour_name",
+        "speakers.name AS speaker_name",
+        "speakers.last_name AS last_name"
+    ];
+
     public ?int $id;
     public string $name;
     public string $description;
@@ -14,6 +31,13 @@ class Event extends ActiveRecord {
     public ?int $day_id;
     public ?int $hour_id;
     public ?int $speaker_id;
+    
+    // Campos que vienen de los JOINS
+    public ?string $category_name;
+    public ?string $day_name;
+    public ?string $hour_name;
+    public ?string $speaker_name;
+    public ?string $last_name;
 
     public function __construct($args = []) {
         $this->id = $args["id"] ?? null;
