@@ -13,7 +13,7 @@ import sourcemaps from "gulp-sourcemaps";
 
 // javascript
 import terser from "gulp-terser";
-import concat from "gulp-concat"
+// import concat from "gulp-concat";
 import rename from "gulp-rename";
 
 // imagenes
@@ -21,6 +21,10 @@ import newer from 'gulp-newer';
 import imagemin, { mozjpeg, optipng } from 'gulp-imagemin';
 import webp from "gulp-webp";
 import avif from "gulp-avif";
+
+// Webpack
+import webpackStream from 'webpack-stream';
+import webpack from 'webpack';
 
 const paths = {
     scss: "src/scss/**/*.scss",
@@ -40,8 +44,24 @@ function css() {
 
 function javascript() {
     return src(paths.js)
+        .pipe(webpackStream({
+            module: {
+                rules: [
+                    {
+                        test: /\.css$/i,
+                        use: ["style-loader", "css-loader"]
+                    }
+                ]
+            },
+            mode: "production",
+            // watch: true,
+            entry: "./src/js/app.js",
+            output: {
+                filename: "bundle.js"
+            }
+        }, webpack))
         .pipe(sourcemaps.init())
-        .pipe(concat("bundle.js"))
+        // .pipe(concat("bundle.js"))
         .pipe(terser())
         .pipe(sourcemaps.write("."))
         .pipe(rename({ suffix: ".min" }))

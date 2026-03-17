@@ -1,4 +1,4 @@
-<h2 class="dashboard__heading"><?php echo $tittle; ?></h2>
+<h2 class="dashboard__heading"><?php echo $title; ?></h2>
 
 <div class="dashboard__container-button">
     <a class="dashboard__button" href="/admin/speakers">

@@ -75,6 +75,14 @@
     text-align: center;
 }
 
+@mixin page-description {
+    text-align: center;
+    font-size: clamp(1.8rem, 0.185vw + 1.741rem, 2rem);
+    font-weight: v.$thin;
+    color: v.$dark-gray;
+    margin-bottom: 5rem;
+}
+
 @mixin gradient-text($init, $end) {
     background: linear-gradient(to right, $init, $end);
     background-clip: text;
@@ -85,6 +93,7 @@
     color: v.$white;
     text-align: center;
     margin-bottom: 2rem;
+    white-space: nowrap;
     @include desktop {
         text-align: left;
         margin: 0;
@@ -165,5 +174,16 @@
         font-size: clamp(1.2rem, 0.185vw + 1.141rem, 1.4rem);
         color: v.$white;
         font-weight: v.$bold;
+    }
+}
+
+@mixin card {
+    border: 1px solid color.adjust(v.$gray, $lightness: 10%);
+    padding: 3rem;
+
+    &__name {
+        font-weight: v.$bolder;
+        font-size: clamp(2.3rem, 0.278vw + 2.211rem, 2.6rem);
+        margin: 2rem 0;
     }
 }

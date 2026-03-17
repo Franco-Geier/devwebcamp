@@ -42,7 +42,7 @@ class AuthController {
         $alerts = User::getAlerts();
 
         $router->render("auth/login", [
-            "tittle" => "Iniciar Sesión",
+            "title" => "Iniciar Sesión",
             "alerts" => $alerts
         ]);
     }
@@ -84,7 +84,7 @@ class AuthController {
         }
 
         $router->render("auth/register", [
-            "tittle" => "Crea tu cuenta en devWebCamp",
+            "title" => "Crea tu cuenta en devWebCamp",
             "user" => $user,
             "alerts" => $alerts
         ]);
@@ -114,7 +114,7 @@ class AuthController {
         $alerts = User::getAlerts();
 
         $router->render("auth/forgot", [
-            "tittle" => "Olvide mi Password",
+            "title" => "Olvide mi Password",
             "alerts" => $alerts
         ]);
     }
@@ -148,7 +148,7 @@ class AuthController {
         $alerts = User::getAlerts();
 
         $router->render("auth/restore", [
-            "tittle" => "Restablecer Password",
+            "title" => "Restablecer Password",
             "alerts" => $alerts,
             "show" => $show
         ]);
@@ -156,7 +156,7 @@ class AuthController {
 
     public static function message(Router $router) {
         $router->render("auth/message", [
-            "tittle" => "Cuenta Creada Exitosamente" 
+            "title" => "Cuenta Creada Exitosamente" 
         ]);
     }
 
@@ -177,7 +177,7 @@ class AuthController {
         $alerts = User::getAlerts();
 
         $router->render("auth/confirm", [
-            "tittle" => "Confirma tu Cuenta en DevWebCamp",
+            "title" => "Confirma tu Cuenta en DevWebCamp",
             "alerts" => $alerts
         ]);
     }

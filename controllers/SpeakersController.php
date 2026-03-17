@@ -31,7 +31,7 @@ class SpeakersController {
         }
 
         $router->render("admin/speakers/index", [
-            "tittle" => "Ponentes / Conferencistas",
+            "title" => "Ponentes / Conferencistas",
             "speakers" => $speakers,
             "pagination" =>$pagination->pagination()
         ]);
@@ -96,7 +96,7 @@ class SpeakersController {
         }
         
         $router->render("admin/speakers/create", [
-            "tittle" => "Registrar Ponente",
+            "title" => "Registrar Ponente",
             "alerts" => $alerts,
             "speaker" => $speaker,
             "social_networks" => json_decode($speaker->social_networks)
@@ -181,7 +181,7 @@ class SpeakersController {
         }
 
         $router->render("admin/speakers/edit", [
-            "tittle" => "Actualizar Ponente",
+            "title" => "Actualizar Ponente",
             "alerts" => $alerts,
             "speaker" => $speaker,
             "social_networks" => json_decode($speaker->social_networks)

@@ -6,7 +6,7 @@ use MVC\Router;
 class RegisteredController {
     public static function index(Router $router) {
         $router->render("admin/registered/index", [
-            "tittle" => "Usuarios Registrados"
+            "title" => "Usuarios Registrados"
         ]);
     }
 }

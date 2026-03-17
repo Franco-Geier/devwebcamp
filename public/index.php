@@ -10,6 +10,7 @@ use Controllers\GiftsController;
 use Controllers\EventsController;
 use Controllers\SpeakersController;
 use Controllers\DashboardController;
+use Controllers\PagesController;
 use Controllers\RegisteredController;
 
 $router = new Router();
@@ -58,5 +59,11 @@ $router->get('/api/speaker', [APISpeakers::class, 'speaker']);
 
 $router->get('/admin/registered', [RegisteredController::class, 'index']);
 $router->get('/admin/gifts', [GiftsController::class, 'index']);
+
+// Área pública
+$router->get('/', [PagesController::class, 'index']);
+$router->get('/devwebcamp', [PagesController::class, 'event']);
+$router->get('/packages', [PagesController::class, 'packages']);
+$router->get('/workshops-conferences', [PagesController::class, 'conferences']);
 
 $router->validateRoutes();

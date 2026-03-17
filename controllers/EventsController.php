@@ -33,7 +33,7 @@ class EventsController {
         $events = Event::paginate($registrations_per_page, $pagination->offset());
 
         $router->render("admin/events/index", [
-            "tittle" => "Conferencias Y Workshops",
+            "title" => "Conferencias Y Workshops",
             "events" => $events,
             "pagination" => $pagination->pagination(),
         ]);
@@ -66,7 +66,7 @@ class EventsController {
         }
 
         $router->render("admin/events/create", [
-            "tittle" => "Registrar Evento",
+            "title" => "Registrar Evento",
             "alerts" => $alerts,
             "categories" => $categories,
             "days" => $days,
@@ -114,7 +114,7 @@ class EventsController {
         }
 
         $router->render("admin/events/edit", [
-            "tittle" => "Editar Evento",
+            "title" => "Editar Evento",
             "alerts" => $alerts,
             "categories" => $categories,
             "days" => $days,

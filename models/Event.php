@@ -11,7 +11,7 @@ class Event extends ActiveRecord {
         "LEFT JOIN categories ON events.category_id = categories.id",
         "LEFT JOIN days ON events.day_id = days.id",
         "LEFT JOIN hours ON events.hour_id = hours.id",
-        "LEFT JOIN speakers ON events.speaker_id = speakers.id"
+        "LEFT JOIN speakers ON events.speaker_id = speakers.id",
     ];
 
     // Campos de las relaciones
@@ -20,7 +20,8 @@ class Event extends ActiveRecord {
         "days.name AS day_name",
         "hours.hour AS hour_name",
         "speakers.name AS speaker_name",
-        "speakers.last_name AS last_name"
+        "speakers.last_name AS last_name",
+        "speakers.image AS speaker_image"
     ];
 
     public ?int $id;
@@ -38,6 +39,7 @@ class Event extends ActiveRecord {
     public ?string $hour_name;
     public ?string $speaker_name;
     public ?string $last_name;
+    public ?string $speaker_image;
 
     public function __construct($args = []) {
         $this->id = $args["id"] ?? null;
