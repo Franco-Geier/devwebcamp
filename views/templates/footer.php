@@ -14,19 +14,19 @@
         <nav class="social-networks">
             <a class="social-networks__link" rel="noopener noreferrer" target="_blank" href="https://facebook.com/C%C3%B3digo-Con-Juan-103341632130628">
                 <span class="social-networks__hide">Facebook</span>
-            </a> 
+            </a>
             <a class="social-networks__link" rel="noopener noreferrer" target="_blank" href="https://twitter.com/codigoconjuan">
                 <span class="social-networks__hide">Twitter</span>
-            </a> 
+            </a>
             <a class="social-networks__link" rel="noopener noreferrer" target="_blank" href="https://youtube.com/codigoconjuan">
                 <span class="social-networks__hide">YouTube</span>
-            </a> 
+            </a>
             <a class="social-networks__link" rel="noopener noreferrer" target="_blank" href="https://instagram.com/codigoconjuan">
                 <span class="social-networks__hide">Instagram</span>
-            </a> 
+            </a>
             <a class="social-networks__link" rel="noopener noreferrer" target="_blank" href="https://tiktok.com/@codigoconjuan">
                 <span class="social-networks__hide">Tiktok</span>
-            </a> 
+            </a>
             <a class="social-networks__link" rel="noopener noreferrer" target="_blank" href="https://github.com/codigoconjuan">
                 <span class="social-networks__hide">Github</span>
             </a>

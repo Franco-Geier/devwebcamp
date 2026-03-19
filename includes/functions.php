@@ -62,5 +62,15 @@ function generateToken(): string {
 
 // Función que muestra la página actual
 function currentPage($path): bool {
-    return str_contains($_SERVER["PATH_INFO"], $path) ? true : false;
+    return str_contains($_SERVER["PATH_INFO"] ?? "/", $path) ? true : false;
+}
+
+// Retorna animación aleatoria
+function aos_animation(): void {
+    $effects = ["fade-up", "fade-down", "fade-left", "fade-right",
+                "flip-left", "flip-right", "zoom-in", "zoom-in-up",
+                "zoom-in-down", "zoom-out"];
+
+    $effect = array_rand($effects, 1);
+    echo ' data-aos="' . $effects[$effect] . '" ';
 }

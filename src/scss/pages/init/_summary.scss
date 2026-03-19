@@ -1,0 +1,41 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.summary {
+    background-image: linear-gradient(to right, rgba(v.$blue, .7), rgba(v.$blue, .9)),
+                image-set(url(../img/bg_numbers.avif) 1x,
+                url(../img/bg_numbers.webp) 1x,
+                url(../img/bg_numbers.jpg) 1x);
+
+    background-size: cover;
+    background-position: center center;
+    padding: 12rem 0;
+
+    &__grid {
+        display: grid;
+        @include m.container;
+        @include m.grid(1, 5rem);
+
+        @include m.tablet {
+            @include m.grid(2, 5rem);
+        }
+    }
+
+    &__block {
+        text-align: center;
+        color: v.$white;
+    }
+
+    &__text {
+        font-weight: v.$bolder;
+        line-height: 1;
+        margin: 0;
+        font-size: clamp(1.9rem, 0.463vw + 1.752rem, 2.4rem);
+        text-transform: uppercase;
+
+        &--number {
+            @extend .summary__text;
+            font-size: clamp(7.5rem, 0.463vw + 7.352rem, 8rem);
+        }
+    }
+}

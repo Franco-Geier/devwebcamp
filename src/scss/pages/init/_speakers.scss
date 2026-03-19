@@ -1,0 +1,61 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.speakers {
+
+    &__grid {
+        display: grid;
+        @include m.grid(1, 5rem);
+        @include m.container;
+
+        @include m.tablet {
+            @include m.grid(2, 5rem);
+        }
+
+        @include m.xl-desktop {
+            @include m.grid(3, 5rem);
+        }
+    }
+}
+
+.speaker {
+    background-position: center top;
+    background-size: clamp(20rem, 17.045vw + 14.545rem, 35rem);
+    background-repeat: no-repeat;
+
+    @for $i from 1 through 4 {
+        &:nth-child(4n + #{$i}) {
+            background-image: image-set(
+                url("../img/bg_#{$i}.avif") 1x,
+                url("../img/bg_#{$i}.webp") 1x,
+                url("../img/bg_#{$i}.png") 1x)
+        }
+    }
+
+    @include m.card;
+
+    &__image {
+        min-width: 200px;
+        @include m.tablet {
+            min-width: unset;
+        }
+    }
+
+    &__location {
+        color: v.$gray;
+        margin: 1rem 0;
+        font-size: 2rem;
+        line-height: 1.5;
+    }
+
+    &__skill-list {
+        @include m.tags;
+    }
+}
+
+.speaker-socials {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    @include m.social-networks(v.$black, 3rem);
+}

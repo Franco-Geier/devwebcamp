@@ -36,7 +36,9 @@ function css() {
     return src(paths.scss) // Identificar el archivo SASS
         .pipe(plumber({ errorHandler: handleError }))  // Manejo de errores con función personalizada
         .pipe(sourcemaps.init())
-        .pipe(sass()) // Compilar SASS a CSS
+        .pipe(sass({ // Compilar SASS a CSS
+            loadPaths: ['src/scss']
+        }))
         .pipe(postcss([autoprefixer(), cssnano()]))
         .pipe(sourcemaps.write("."))
         .pipe(dest("./public/build/css")); // Almacenar en la carpeta build

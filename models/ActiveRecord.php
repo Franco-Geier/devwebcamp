@@ -84,8 +84,13 @@
 
         
         // Traer un total de los registros
-        public static function total() {
+        public static function total($column = "", $value = "") {
             $query = "SELECT COUNT(*) FROM " . static::$table;
+
+            if($column) {
+                $query .= " WHERE {$column} = {$value}";
+            }
+
             $result = self::$db->query($query);
             $total = $result->fetch(PDO::FETCH_ASSOC);
             return array_shift($total);

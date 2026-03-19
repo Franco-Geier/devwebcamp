@@ -1,13 +1,36 @@
 <?php
 namespace Controllers;
 
-use MVC\Router;
 use Model\Event;
+use Model\Speaker;
+use MVC\Router;
 
 class PagesController {
     public static function index(Router $router) {
+        $events = Event::allWithJoins("hour_id", null, false);
+
+        // Estructura multidimensional para agrupar eventos
+        $formatted_events = [];
+
+        foreach($events as $event) {
+            $formatted_events[$event->day_id][$event->category_id][] = $event;
+        }
+
+        // Obtener el total de cada bloque
+        $speakers_total = Speaker::total();
+        $conferences_total = Event::total("category_id", 1);
+        $workshops_total = Event::total("category_id", 2);
+        
+        // Obtener todos los ponentes
+        $speakers = Speaker::allWithJoins();
+
         $router->render("pages/index", [
-            "title" => "Inicio"
+            "title" => "Workshops & Conferencias",
+            "events" => $formatted_events,
+            "speakers_total" => $speakers_total,
+            "conferences_total" => $conferences_total,
+            "workshops_total" => $workshops_total,
+            "speakers" => $speakers
         ]);
     }
 
@@ -36,6 +59,13 @@ class PagesController {
         $router->render("pages/conferences", [
             "title" => "Conferencias & Workshops",
             "events" => $formatted_events
+        ]);
+    }
+
+    public static function error(Router $router) {
+
+        $router->render("pages/error", [
+            "title" => "Página no encontrada"
         ]);
     }
 }
