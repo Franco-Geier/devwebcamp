@@ -69,7 +69,7 @@
     }
 
     &__price {
-        margin: 3rem 0 0 0;
+        margin: 3rem 0;
         font-weight: v.$bolder;
         font-size: 4rem;
     }
@@ -83,5 +83,75 @@
     &__link {
         @include m.button(v.$blue, v.$white);
         width: auto;
+    }
+
+    &--access {
+        width: 30rem;
+        height: 50rem;
+        padding: 10rem 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        @include m.tablet {
+            width: 60rem;
+            height: 30rem;
+            padding: 6rem;
+            justify-content: center;
+        }
+
+        .ticket__logo {
+            font-size: clamp(2rem, 0.909vw + 1.709rem, 2.8rem);
+            margin: 0;
+            text-align: left;
+        }
+        
+        .ticket__name {
+            font-size: clamp(2rem, 0.455vw + 1.855rem, 2.4rem);
+            text-transform: uppercase;
+            font-weight: v.$bolder;
+        }
+        .ticket__code {
+            font-size: clamp(3rem, 1.136vw + 2.636rem, 4rem);
+            font-weight: v.$bold;
+            text-align: center;
+            margin: 0;
+            width: 100%;
+            position: absolute;
+            bottom: 6rem;
+            left: 0;
+
+            @include m.tablet {
+                rotate: 90deg;
+                transform-origin: 0 0;
+                top: 0;
+                left: calc(100% - 5rem);
+                width: 30rem;
+            }
+        }
+    }
+
+    &::before {
+        clip-path: circle(50% at 50% 25%);
+        left: calc(50% - 2.5rem);
+        top: 0;
+        
+        @include m.tablet {
+            clip-path: circle(50% at 25% 50%);
+            left: 0;
+            top: calc(50% - 2.5rem);
+        }
+    }
+
+    &::after {
+        clip-path: circle(50% at 50% 75%);
+        left: calc(50% - 2.5rem);
+        top: calc(100% - 5rem);
+        
+        @include m.tablet {
+            clip-path: circle(50% at 75% 50%);
+            left: calc(100% - 5rem);
+            top: calc(50% - 2.5rem);
+        }
     }
 }

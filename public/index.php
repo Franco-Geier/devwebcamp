@@ -2,16 +2,17 @@
 
 require_once __DIR__ . '/../includes/app.php';
 
-use MVC\Router;
 use Controllers\APIEvents;
 use Controllers\APISpeakers;
 use Controllers\AuthController;
-use Controllers\GiftsController;
-use Controllers\EventsController;
-use Controllers\SpeakersController;
 use Controllers\DashboardController;
+use Controllers\EventsController;
+use Controllers\GiftsController;
 use Controllers\PagesController;
+use Controllers\RegisterController;
 use Controllers\RegisteredController;
+use Controllers\SpeakersController;
+use MVC\Router;
 
 $router = new Router();
 
@@ -59,6 +60,14 @@ $router->get('/api/speaker', [APISpeakers::class, 'speaker']);
 
 $router->get('/admin/registered', [RegisteredController::class, 'index']);
 $router->get('/admin/gifts', [GiftsController::class, 'index']);
+
+// Registro de usuarios
+$router->get('/end-register', [RegisterController::class, 'create']);
+$router->post('/end-register/free', [RegisterController::class, 'free']);
+$router->post('/end-register/pay', [RegisterController::class, 'pay']);
+
+// Boleto virtual
+$router->get("/ticket", [RegisterController::class, "ticket"]);
 
 // Área pública
 $router->get('/', [PagesController::class, 'index']);

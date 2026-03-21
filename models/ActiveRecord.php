@@ -202,7 +202,7 @@
         }
 
 
-        public static function whereAll(string $columna, mixed $valor): array {
+        public static function whereAll(string $column, mixed $value): array {
             $fields = static::relationsFields();
             $joins = static::buildRelations();
 
@@ -210,11 +210,11 @@
                 SELECT $fields
                 FROM " . static::$table . "
                 $joins
-                WHERE $columna = :valor
+                WHERE $column = :value
             ";
 
             $stmt = self::$db->prepare($query);
-            $stmt->execute(['valor' => $valor]);
+            $stmt->execute(['value' => $value]);
 
             $registros = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $objetos = [];
@@ -254,41 +254,41 @@
 
 
         public function update(): bool {
-            $atributos = $this->cleanAtributes();
+            $atributes = $this->cleanAtributes();
         
-            $valores = [];
-            foreach (array_keys($atributos) as $key) {
-                $valores[] = "$key = :$key";
+            $values = [];
+            foreach (array_keys($atributes) as $key) {
+                $values[] = "$key = :$key";
             }
         
             $query = "UPDATE " . static::$table . " SET ";
-            $query .= implode(', ', $valores);
+            $query .= implode(', ', $values);
             $query .= " WHERE id = :id LIMIT 1";
         
-            $atributos['id'] = $this->id;
+            $atributes['id'] = $this->id;
             $stmt = self::$db->prepare($query);
-            $resultado = $stmt->execute($atributos);
+            $result = $stmt->execute($atributes);
         
-            if (!$resultado) {
+            if (!$result) {
                 error_log("ERROR EN ACTUALIZAR: " . print_r($stmt->errorInfo(), true));
             }
-            return $resultado;
+            return $result;
         }
 
 
         public function create(): bool {
-            $atributos = $this->cleanAtributes();
-            $columnas = array_keys($atributos);
-            $placeholders = array_map(fn($col) => ":$col", $columnas); // Los : se llaman placeholders
+            $atributes = $this->cleanAtributes();
+            $columns = array_keys($atributes);
+            $placeholders = array_map(fn($col) => ":$col", $columns); // Los : se llaman placeholders
 
             // Armamos la consulta
-            $query = "INSERT INTO " . static::$table . " (" . implode(', ', $columnas) . ")";
+            $query = "INSERT INTO " . static::$table . " (" . implode(', ', $columns) . ")";
             $query .= " VALUES (" . implode(', ', $placeholders) . ")";
         
             $stmt = self::$db->prepare($query); // Preparamos la consulta
-            $resultado = $stmt->execute($atributos); // Ejecutamos
+            $result = $stmt->execute($atributes); // Ejecutamos
 
-            if (!$resultado) {
+            if (!$result) {
                 error_log("ERROR EN CREAR: " . print_r($stmt->errorInfo(), true));
                 return false;
             }
@@ -362,19 +362,19 @@
         public function delete(): bool {
             $query = "DELETE FROM " . static::$table . " WHERE id = :id LIMIT 1";
             $stmt = self::$db->prepare($query);
-            $resultado = $stmt->execute(['id' => $this->id]);
-            return $resultado;
+            $result = $stmt->execute(['id' => $this->id]);
+            return $result;
         }
 
 
         // Limpia los atributos
         public function cleanAtributes(): array {
-            $atributos = [];
-            foreach (static::$columnsDB as $columna) {
-                if(in_array($columna, ['id', 'creado', 'fecha_registro'])) continue;
-                $atributos[$columna] = $this->$columna;
+            $atributes = [];
+            foreach (static::$columnsDB as $column) {
+                if(in_array($column, ['id', 'creado', 'fecha_registro'])) continue;
+                $atributes[$column] = $this->$column;
             }
-            return $atributos;
+            return $atributes;
         }
 
         

@@ -60,6 +60,11 @@ function generateToken(): string {
     return md5(uniqid((string)rand(), true));
 }
 
+// Genera un token de 8 caracteres
+function eightTokenGenerator() {
+    return substr(md5(uniqid((string)rand(), true)), 0, 8);
+}
+
 // Función que muestra la página actual
 function currentPage($path): bool {
     return str_contains($_SERVER["PATH_INFO"] ?? "/", $path) ? true : false;
