@@ -4,7 +4,6 @@
 
     <div class="events">
         <h3 class="events__heading">&lt;Conferencias /></h3>
-
         <p class="events__date">Viernes 5 de Diciembre</p>
         <div class="events__list slider swiper">
             <div class="swiper-wrapper">

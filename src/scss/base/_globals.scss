@@ -28,3 +28,6 @@ picture {
     height: auto;
     display: block;
 }
+.swal2-popup {
+    font-size: clamp(1.3rem, 0.795vw + 1.045rem, 2rem)!important;
+}

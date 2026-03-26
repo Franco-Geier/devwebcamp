@@ -3,7 +3,7 @@
     <p class="page__description">Tu Boleto - te recomendamos almacenarlo, puedes compartirlo en redes sociales</p>
 
     <div class="ticket__virtual">
-        <div class="ticket ticket--<?php echo $register->package->class_css(); ?> ticket--access">
+        <div class="ticket ticket--access ticket--<?php echo $register->package->class_css(); ?>">
             <div class="ticket__content">
                 <h4 class="ticket__logo">&#60;DevWebCamp /></h4>
                 <p class="ticket__plan"><?php echo $register->package->name; ?></p>

@@ -1,4 +1,6 @@
-<script src="https://www.paypal.com/sdk/js?client-id=Ac_fY86XhftnKA9QImR926Mj3wS4EoD22ZWdAydYCH8IVc00hgdCrES1iJhncVwKhA_-4ZlmEK0eOgom"></script>
+<script 
+    src="https://www.paypal.com/sdk/js?client-id=Ac_fY86XhftnKA9QImR926Mj3wS4EoD22ZWdAydYCH8IVc00hgdCrES1iJhncVwKhA_-4ZlmEK0eOgom">
+</script>
 
 <main class="register">
     <h2 class="register__heading"><?php echo $title; ?></h2>
@@ -40,6 +42,7 @@
                 <li class="package__element">Acceso a las grabaciones.</li>
             </ul>
             <p class="package__price">$49</p>
+            <div id="paypal-button-container-virtual"></div>
         </div>
     </div>
 </main>
@@ -85,4 +88,47 @@
             });
         }
     }).render('#paypal-button-container');
+
+
+    // Pase virtual
+    paypal.Buttons({
+        style: {
+            shape: 'rect',
+            color: 'blue',
+            layout: 'vertical',
+            label: 'pay',
+        },
+
+        // Configuración de la compra
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    "description": 2,
+                    amount: {
+                        value: 49
+                    }
+                }]
+            });
+        },
+
+        // Ejecución después del pago
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(orderData) {
+                // console.log("Capture result", orderData, JSON.stringify(orderData, null, 2));
+                const data = new FormData();
+                data.append("package_id", orderData.purchase_units[0].description);
+                data.append("pay_id", orderData.purchase_units[0].payments.captures[0].id);
+                fetch("/end-register/pay", {
+                    method: "POST",
+                    body: data
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if(result.result) {
+                        window.location.href = '/end-register/conferences';
+                    }
+                })
+            });
+        }
+    }).render('#paypal-button-container-virtual');
 </script>

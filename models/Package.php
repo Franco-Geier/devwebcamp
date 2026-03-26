@@ -18,6 +18,6 @@ class Package extends ActiveRecord {
             'Gratis'     => 'free'
         ];
         // Retorna la clase según el nombre en la DB, o 'free' por defecto
-        return $map[ strtolower($this->name) ] ?? 'free';
+        return $map[$this->name] ?? 'free';
     }
 }

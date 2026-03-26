@@ -109,7 +109,8 @@
         @include m.button(v.$blue, v.$white);
         width: auto;
         align-self: flex-start;
-        &--register {
+        &--register,
+        &--full {
             width: 100%;
             padding-left: clamp(2rem, 0.463vw + 1.852rem, 2.5rem);
             padding-right: clamp(2rem, 0.463vw + 1.852rem, 2.5rem);

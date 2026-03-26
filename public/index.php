@@ -65,6 +65,8 @@ $router->get('/admin/gifts', [GiftsController::class, 'index']);
 $router->get('/end-register', [RegisterController::class, 'create']);
 $router->post('/end-register/free', [RegisterController::class, 'free']);
 $router->post('/end-register/pay', [RegisterController::class, 'pay']);
+$router->get('/end-register/conferences', [RegisterController::class, 'conferences']);
+$router->post('/end-register/conferences', [RegisterController::class, 'conferences']);
 
 // Boleto virtual
 $router->get("/ticket", [RegisterController::class, "ticket"]);

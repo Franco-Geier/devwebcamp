@@ -1,0 +1,110 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use "sass:color";
+
+.events-register {
+    @include m.container;
+    @include m.tablet {
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    &__list {
+        @include m.tablet {
+            flex: 0 0 60%;
+        }
+    }
+
+    &__grid {
+        display: grid;
+        @include m.grid(1, 3rem);
+        @include m.tablet {
+            @include m.grid(2, 3rem);
+        }
+    }
+
+    &__heading {
+        &--conferences,
+        &--workshops {
+            font-size: clamp(2rem, 3.409vw + 0.909rem, 5rem);
+            white-space: nowrap;
+        }
+        &--conferences {
+            color: v.$blue;
+        }
+        &--workshops {
+            color: v.$secondary;
+            margin-top: 5rem;
+        }
+    }
+
+    &__date {
+        margin: 6rem 0 3rem;
+    }
+}
+
+.register {
+    background-color: v.$light-gray;
+    padding: 3rem;
+    border-radius: 1rem;
+
+    @include m.tablet {
+        flex: 0 0 40%;
+        position: sticky;
+        top: 1.5rem;
+    }
+
+    &__heading {
+        @include m.tablet {
+            margin: 0 0 3rem 0;
+        }
+    }
+
+    &__event {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        &:nth-child(even) {
+            background-color: color.adjust(v.$light-gray, $lightness: -3%);
+        }
+    }
+
+    &__name {
+        font-size: clamp(1.8rem, 0.227vw + 1.727rem, 2rem);
+        font-weight: v.$bold;
+        margin: 0;
+    }
+
+    &__delete {
+        all: unset;
+        color: v.$red;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__text {
+        text-align: center;
+    }
+
+    &__gift {
+        margin-top: 3rem;
+    }
+
+    &__label {
+        display: block;
+        font-size: 2.2rem;
+        font-weight: v.$bold;
+        margin-bottom: 1rem;
+    }
+
+    &__select {
+        width: 100%;
+        background-color: v.$white;
+        border: 1px solid v.$gray;
+        padding: 1rem;
+        border-radius: .5rem;
+    }
+}

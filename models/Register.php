@@ -4,13 +4,14 @@ namespace Model;
 
 class Register extends ActiveRecord {
     protected static $table = 'registers';
-    protected static $columnsDB = ['id', 'package_id', 'pay_id', 'token', 'user_id'];
+    protected static $columnsDB = ['id', 'package_id', 'pay_id', 'token', 'user_id', "gift_id"];
     
     public ?int $id;
     public ?int $package_id;
     public ?string $pay_id;
     public ?string $token;
     public ?int $user_id;
+    public ?int $gift_id;
 
     // Definir las propiedades para los objetos relacionados
     public $user = null;
@@ -28,5 +29,6 @@ class Register extends ActiveRecord {
         $this->pay_id = $args['pay_id'] ?? '';
         $this->token = $args['token'] ?? '';
         $this->user_id = isset($args['user_id']) && $args['user_id'] !== "" ? (int)$args['user_id'] : null;
+        $this->gift_id = isset($args['gift_id']) && $args['gift_id'] !== "" ? (int)$args['gift_id'] : 1;
     }
 }
