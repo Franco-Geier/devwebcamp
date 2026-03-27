@@ -21,12 +21,12 @@
         ?>
 
         <main class="dashboard__content">
-            <?php 
+            <?php
                 echo $content; 
-            ?> 
+            ?>
         </main>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.min.js" integrity="sha512-Y51n9mtKTVBh3Jbx5pZSJNDDMyY+yGe77DGtBPzRlgsf/YLCh13kSZ3JmfHGzYFCmOndraf0sQgfM654b7dJ3w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/build/js/bundle.min.js" defer></script>
 </body>
 </html>

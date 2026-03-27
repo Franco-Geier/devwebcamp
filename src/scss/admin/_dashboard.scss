@@ -139,4 +139,8 @@
             width: auto;
         }
     }
+
+    &__graphic {
+        @include m.container-sd;
+    }
 }

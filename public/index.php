@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../includes/app.php';
 
 use Controllers\APIEvents;
+use Controllers\APIGifts;
 use Controllers\APISpeakers;
 use Controllers\AuthController;
 use Controllers\DashboardController;
@@ -57,6 +58,7 @@ $router->post('/admin/events/delete', [EventsController::class, 'delete']);
 $router->get('/api/events-schedule', [APIEvents::class, 'index']);
 $router->get('/api/speakers', [APISpeakers::class, 'index']);
 $router->get('/api/speaker', [APISpeakers::class, 'speaker']);
+$router->get('/api/gifts', [APIGifts::class, 'index']);
 
 $router->get('/admin/registered', [RegisteredController::class, 'index']);
 $router->get('/admin/gifts', [GiftsController::class, 'index']);

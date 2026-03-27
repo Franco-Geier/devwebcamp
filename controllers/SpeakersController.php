@@ -8,7 +8,13 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
 class SpeakersController {
+    
     public static function index(Router $router) {
+
+        if(!isAdmin()) {
+            header("Location: /login");
+        }
+
         $current_page = $_GET["page"] ?? 1;
         $current_page = filter_var($current_page, FILTER_VALIDATE_INT);
         if($current_page === false || $current_page < 1) {
@@ -25,10 +31,6 @@ class SpeakersController {
         }
 
         $speakers = Speaker::paginate($registrations_per_page, $pagination->offset());
-
-        if(!isAdmin()) {
-            header("Location: /login");
-        }
 
         $router->render("admin/speakers/index", [
             "title" => "Ponentes / Conferencistas",

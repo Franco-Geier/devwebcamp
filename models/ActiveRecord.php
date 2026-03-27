@@ -97,6 +97,24 @@
         }
 
 
+        // Traer un total de los registros con un Array Where
+        public static function totalArray($array = []) {
+            $query = "SELECT COUNT(*) FROM " . static::$table  . " WHERE ";
+
+            foreach($array as $key => $value) {
+                if($key == array_key_last($array)) {
+                    $query .= "{$key} = '{$value}'";
+                } else {
+                    $query .= "{$key} = '{$value}' AND ";
+                }
+            }
+
+            $result = self::$db->query($query);
+            $total = $result->fetch(PDO::FETCH_ASSOC);
+            return array_shift($total);
+        }
+
+
         /**
          * Devuelve los campos que se deben seleccionar en la consulta.
          * Si hay relaciones definidas, incluye los alias (AS). Si no, solo '*'.
